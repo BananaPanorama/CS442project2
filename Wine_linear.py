@@ -16,4 +16,4 @@ v_df = v_df.select(['features','quality'])
 # Fit the model
 lr = LinearRegression(featuresCol = 'features', labelCol = 'quality', maxIter = 25000, regParam = 0.05, elasticNetParam = 0.08, tol = 1e-07)
 lrModel = lr.fit(v_df)
-lrModel.save("./lrModel")
+lrModel.write().overwrite().save("./lrModel")

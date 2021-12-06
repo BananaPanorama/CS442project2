@@ -14,4 +14,4 @@ v_df = v_df.select(['features','quality'])
 # Fit the model
 rf = RandomForestRegressor(featuresCol = 'features', labelCol = 'quality',numTrees = 100, maxDepth = 20, maxBins = 200, minInstancesPerNode = 1)
 rfModel = rf.fit(v_df)
-rfModel.save('./rfModel')
+rfModel.write().overwrite().save('./rfModel')

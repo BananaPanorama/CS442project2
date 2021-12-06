@@ -10,10 +10,16 @@ RUN pip3 --no-cache-dir install \
 	pandas \
 	sklearn 
 
+ADD entry3.sh /
 ADD my-app.py /
+ADD Wine_forest.py /
+ADD Wine_linear.py /
+ADD dataSplitter.py /
 ADD test.csv /
 ADD train.csv /
 ADD lrModel.tar.xz /
 ADD rfModel.tar.xz /
 
-CMD ["spark-submit", "./my-app.py"]
+RUN ["chmod", "+x", "/entry3.sh"]
+
+ENTRYPOINT ["./entry3.sh"]
